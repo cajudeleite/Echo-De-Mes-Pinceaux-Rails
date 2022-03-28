@@ -1,43 +1,91 @@
-<p id="notice"><%= notice %></p>
-
-<% @artwork.photos.each do |photo| %>
-  <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
-<% end %>
-
-<p>
-  <strong>Title:</strong>
-  <%= @artwork.title %>
-</p>
-
-<p>
-  <strong>Year:</strong>
-  <%= @artwork.year_id %>
-</p>
-
-<p>
-  <strong>Technique:</strong>
-  <%= @artwork.technique_id %>
-</p>
-
-<p>
-  <strong>Collection:</strong>
-  <%= @artwork.collection_id %>
-</p>
-
-<p>
-  <strong>Status:</strong>
-  <%= @artwork.status_id %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @artwork.description %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @artwork.user_id %>
-</p>
-
-<%= link_to 'Edit', edit_artwork_path(@artwork) %> |
-<%= link_to 'Back', artworks_path %>
+<div className='artwork__item'>
+  <p id="notice"><%= notice %></p>
+  <% @artwork.photos.each do |photo| %>
+    <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+  <% end %>
+  <p>
+    <strong>Title:</strong>
+    <%= @artwork.title %>
+  </p>
+  <p>
+    <strong>Year:</strong>
+    <%= @artwork.year.name %>
+  </p>
+  <p>
+    <strong>Technique:</strong>
+    <%= @artwork.technique.name %>
+  </p>
+  <p>
+    <strong>Collection:</strong>
+    <%= @artwork.collection.name %>
+  </p>
+  <p>
+    <strong>Status:</strong>
+    <%= @artwork.status.name %>
+  </p>
+  <p>
+    <strong>Description:</strong>
+    <%= @artwork.description %>
+  </p>
+  <%= link_to 'Edit', edit_artwork_path(@artwork) %> |
+  <%= link_to 'Back', artworks_path %>
+</div>
+{!alert && <div className="artwork__item__top">
+  <button className="artwork__item__top__back_button" onClick={() => history.push('/artwork')}><FontAwesomeIcon className="artwork__item__top__back_button__left_arrow" icon={faArrowLeftLong} /> Revenir en arrière</button>
+  {logged && <div className="artwork__item__top__last_buttons">
+    <button className="artwork__item__top__last_buttons__edit" onClick={() => {
+      dispatch(setFormMethod('patch'));
+      if (cookies.allowCookies) {
+        setCookie('artworkMethod', 'patch', {
+          path: "/"
+        });
+        setCookie('inputFocus', 'true', {
+          path: "/"
+        });
+      };
+      history.push('/artwork/create');
+    }}>Modifier <FontAwesomeIcon className="artwork__item__top__last_buttons__edit__pencil" icon={faPencil} /></button>
+    <button className="artwork__item__top__last_buttons__delete" onClick={() => {
+      setAlert(true);
+      dispatch(deleteArtwork(cookiedId()));
+    }}>Supprimer <FontAwesomeIcon className="artwork__item__top__last_buttons__delete__trash" icon={faTrashCan} /></button>
+  </div>}
+</div>}
+<div className="artwork__item__content">
+  {!alert && <Carousel showThumbs={false} selectedItem={photoArray.length - 1} className="artwork__item__content__photo" autoPlay={true} interval={10000} emulateTouch={true} swipeable={true} infiniteLoop={true} dynamicHeight={true} renderArrowPrev={(onClickHandler, hasPrev, label) =>
+    hasPrev && (
+      <button className='home__carousel__left' type="button" onClick={onClickHandler} title={label}>
+        <FontAwesomeIcon icon={faChevronLeft} />
+      </button>
+    )
+  } renderArrowNext={(onClickHandler, hasNext, label) =>
+    hasNext && (
+      <button className='home__carousel__right' type="button" onClick={onClickHandler} title={label}>
+        <FontAwesomeIcon icon={faChevronRight} />
+      </button>
+    )
+  }>
+    {photoArray.map((item) => <AdvancedImage
+      key={cookiedId()}
+      className="artwork__item__content__photo__image"
+      cldImg={cld.image(item)}
+    />)}
+  </Carousel>}
+  {!alert && <div className="artwork__item__content__text">
+    <h1 className='artwork__item__content__text__title'>{title}</h1>
+    <p className='artwork__item__content__text__dateandtechnique'>{yearName} / {textTreatment(techniqueName)}</p>
+    <p className='artwork__item__content__text__collection'>{textTreatment(collectionName)}</p>
+    <p className='artwork__item__content__text__status'>{textTreatment(statusName)}</p>
+    {descriptionArray.map((item) => {
+      const linkFound = item.match(/(?:www|https?)[^\s]+/g);
+      if (linkFound != null) {
+        return (<p className='artwork__item__content__text__description'>{[item.split(linkFound)[0], linkFound[0], item.split(linkFound)[1]].map((item) => <Description text={item} />)}</p>)
+      } else {
+        return (<p className='artwork__item__content__text__description'><Description text={item} textTreatment={textTreatment} /></p>);
+      }
+    }
+    )}
+  </div>}
+</div>
+{!alert && <Comments artworkId={cookiedId()} setAlert={setAlert} />}
+{alert && <PageAlert />}
