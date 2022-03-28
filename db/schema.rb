@@ -10,10 +10,64 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_27_102615) do
+ActiveRecord::Schema.define(version: 2022_03_27_104414) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "artworks", force: :cascade do |t|
+    t.string "title"
+    t.bigint "year_id", null: false
+    t.bigint "technique_id", null: false
+    t.bigint "collection_id", null: false
+    t.bigint "status_id", null: false
+    t.string "description"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["collection_id"], name: "index_artworks_on_collection_id"
+    t.index ["status_id"], name: "index_artworks_on_status_id"
+    t.index ["technique_id"], name: "index_artworks_on_technique_id"
+    t.index ["user_id"], name: "index_artworks_on_user_id"
+    t.index ["year_id"], name: "index_artworks_on_year_id"
+  end
+
+  create_table "collections", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.string "username"
+    t.string "message"
+    t.bigint "artwork_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["artwork_id"], name: "index_comments_on_artwork_id"
+  end
+
+  create_table "contacts", force: :cascade do |t|
+    t.string "last_name"
+    t.string "first_name"
+    t.string "e_mail"
+    t.string "title"
+    t.string "message"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "statuses", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "techniques", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -27,4 +81,16 @@ ActiveRecord::Schema.define(version: 2022_03_27_102615) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "years", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  add_foreign_key "artworks", "collections"
+  add_foreign_key "artworks", "statuses"
+  add_foreign_key "artworks", "techniques"
+  add_foreign_key "artworks", "users"
+  add_foreign_key "artworks", "years"
+  add_foreign_key "comments", "artworks"
 end
