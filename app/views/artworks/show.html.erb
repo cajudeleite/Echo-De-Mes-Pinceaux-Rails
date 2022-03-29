@@ -1,91 +1,69 @@
-<div className='artwork__item'>
+<div class='artwork__item'>
   <p id="notice"><%= notice %></p>
-  <% @artwork.photos.each do |photo| %>
-    <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
-  <% end %>
-  <p>
-    <strong>Title:</strong>
-    <%= @artwork.title %>
-  </p>
-  <p>
-    <strong>Year:</strong>
-    <%= @artwork.year.name %>
-  </p>
-  <p>
-    <strong>Technique:</strong>
-    <%= @artwork.technique.name %>
-  </p>
-  <p>
-    <strong>Collection:</strong>
-    <%= @artwork.collection.name %>
-  </p>
-  <p>
-    <strong>Status:</strong>
-    <%= @artwork.status.name %>
-  </p>
-  <p>
-    <strong>Description:</strong>
-    <%= @artwork.description %>
-  </p>
-  <%= link_to 'Edit', edit_artwork_path(@artwork) %> |
-  <%= link_to 'Back', artworks_path %>
-</div>
-{!alert && <div className="artwork__item__top">
-  <button className="artwork__item__top__back_button" onClick={() => history.push('/artwork')}><FontAwesomeIcon className="artwork__item__top__back_button__left_arrow" icon={faArrowLeftLong} /> Revenir en arrière</button>
-  {logged && <div className="artwork__item__top__last_buttons">
-    <button className="artwork__item__top__last_buttons__edit" onClick={() => {
-      dispatch(setFormMethod('patch'));
-      if (cookies.allowCookies) {
-        setCookie('artworkMethod', 'patch', {
-          path: "/"
-        });
-        setCookie('inputFocus', 'true', {
-          path: "/"
-        });
-      };
-      history.push('/artwork/create');
-    }}>Modifier <FontAwesomeIcon className="artwork__item__top__last_buttons__edit__pencil" icon={faPencil} /></button>
-    <button className="artwork__item__top__last_buttons__delete" onClick={() => {
-      setAlert(true);
-      dispatch(deleteArtwork(cookiedId()));
-    }}>Supprimer <FontAwesomeIcon className="artwork__item__top__last_buttons__delete__trash" icon={faTrashCan} /></button>
-  </div>}
-</div>}
-<div className="artwork__item__content">
-  {!alert && <Carousel showThumbs={false} selectedItem={photoArray.length - 1} className="artwork__item__content__photo" autoPlay={true} interval={10000} emulateTouch={true} swipeable={true} infiniteLoop={true} dynamicHeight={true} renderArrowPrev={(onClickHandler, hasPrev, label) =>
-    hasPrev && (
-      <button className='home__carousel__left' type="button" onClick={onClickHandler} title={label}>
-        <FontAwesomeIcon icon={faChevronLeft} />
+  <div class="artwork__item__top">
+    <%= link_to artworks_path, class: 'artwork__item__top__back_button' do %>
+      <i class="fa-solid fa-arrow-left-long artwork__item__top__back_button__left_arrow"></i>Revenir en arrière
+    <% end %>
+    <% if user_signed_in? %>
+      <div class="artwork__item__top__last_buttons">
+        <%= link_to edit_artwork_path(@artwork), class: 'artwork__item__top__last_buttons__edit' do %>
+          Modifier<i class="fa-solid fa-pencil artwork__item__top__last_buttons__edit__icon"></i>
+        <% end %>
+        <%= link_to @artwork, method: :delete, data: { confirm: 'Voulez-vous vraiment supprimer cette réalisation artistique?' }, class: 'artwork__item__top__last_buttons__delete' do %>
+          Supprimer<i class="fa-solid fa-trash-can artwork__item__top__last_buttons__delete__icon"></i>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+  <div class="artwork__item__content">
+    <div id="carouselExampleIndicators" class="carousel slide w-50" data-bs-ride="carousel">
+      <div class="carousel-indicators">
+        <% @artwork.photos.each_with_index do |photo, index| %>
+          <% if index == 0 %>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="<%= index %>" class="active" aria-current="true" aria-label="Slide <%= index + 1 %>"></button>
+          <% else %>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="<%= index %>" aria-label="Slide <%= index + 1 %>"></button>
+          <% end %>
+        <% end %>
+      </div>
+      <div class="carousel-inner">
+        <% @artwork.photos.each_with_index do |photo, index| %>
+          <% if index == 0 %>
+            <div class="carousel-item active artwork__item__content__photo">
+              <%= cl_image_tag photo.key, crop: :fill, class: 'artwork__item__content__photo__image' %>
+            </div>
+          <% else %>
+            <div class="carousel-item artwork__item__content__photo">
+              <%= cl_image_tag photo.key, crop: :fill, class: 'artwork__item__content__photo__image' %>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Précédent</span>
       </button>
-    )
-  } renderArrowNext={(onClickHandler, hasNext, label) =>
-    hasNext && (
-      <button className='home__carousel__right' type="button" onClick={onClickHandler} title={label}>
-        <FontAwesomeIcon icon={faChevronRight} />
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Prochain</span>
       </button>
-    )
-  }>
-    {photoArray.map((item) => <AdvancedImage
-      key={cookiedId()}
-      className="artwork__item__content__photo__image"
-      cldImg={cld.image(item)}
-    />)}
-  </Carousel>}
-  {!alert && <div className="artwork__item__content__text">
-    <h1 className='artwork__item__content__text__title'>{title}</h1>
-    <p className='artwork__item__content__text__dateandtechnique'>{yearName} / {textTreatment(techniqueName)}</p>
-    <p className='artwork__item__content__text__collection'>{textTreatment(collectionName)}</p>
-    <p className='artwork__item__content__text__status'>{textTreatment(statusName)}</p>
-    {descriptionArray.map((item) => {
-      const linkFound = item.match(/(?:www|https?)[^\s]+/g);
-      if (linkFound != null) {
-        return (<p className='artwork__item__content__text__description'>{[item.split(linkFound)[0], linkFound[0], item.split(linkFound)[1]].map((item) => <Description text={item} />)}</p>)
-      } else {
-        return (<p className='artwork__item__content__text__description'><Description text={item} textTreatment={textTreatment} /></p>);
-      }
-    }
-    )}
-  </div>}
+    </div>
+    <div class="artwork__item__content__text">
+      <h1 class='artwork__item__content__text__title'>
+        <%= @artwork.title %>
+      </h1>
+      <p class='artwork__item__content__text__dateandtechnique'>
+        <%= @artwork.year.name %> / <%= @artwork.technique.name %>
+      </p>
+      <p class='artwork__item__content__text__collection'>
+        <%= @artwork.collection.name %>
+      </p>
+      <p class='artwork__item__content__text__status'>
+        <%= @artwork.status.name %>
+      </p>
+      <p class='artwork__item__content__text__description'>
+        <%= simple_format(@artwork.description) %>
+      </p>
+    </div>
+  </div>
 </div>
-{!alert && <Comments artworkId={cookiedId()} setAlert={setAlert} />}
-{alert && <PageAlert />}
