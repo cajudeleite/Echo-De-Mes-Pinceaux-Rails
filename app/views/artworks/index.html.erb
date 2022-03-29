@@ -1,10 +1,12 @@
 <section class='artwork'>
   <p id="notice"><%= notice %></p>
-  <div class="artwork__create">
-    <%= button_to new_artwork_path, class: 'artwork__create__button', :method => "get" do %>
-      Nouvelle Publication<i class="fa-solid fa-plus artwork__create__button__plus"></i>
-    <% end %>
-  </div>
+  <% if user_signed_in? %>
+    <div class="artwork__create">
+      <%= button_to new_artwork_path, class: 'artwork__create__button', :method => "get" do %>
+        Nouvelle Publication<i class="fa-solid fa-plus artwork__create__button__plus"></i>
+      <% end %>
+    </div>
+  <% end %>
   <h2 class='artwork__disclaimer'>Cliquez sur les réalisations pour naviguer</h2>
   <div class="artwork__list">
     <% @artworks.each do |artwork| %>

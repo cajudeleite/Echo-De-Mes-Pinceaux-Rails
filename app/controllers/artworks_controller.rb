@@ -27,7 +27,7 @@ class ArtworksController < ApplicationController
     @artwork.user_id = current_user.id
     respond_to do |format|
       if @artwork.save
-        format.html { redirect_to artwork_url(@artwork), notice: "Artwork was successfully created." }
+        format.html { redirect_to artwork_url(@artwork), notice: "Réalisation artistique publiée avec succès" }
         format.json { render :show, status: :created, location: @artwork }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -40,7 +40,7 @@ class ArtworksController < ApplicationController
   def update
     respond_to do |format|
       if @artwork.update(artwork_params)
-        format.html { redirect_to artwork_url(@artwork), notice: "Artwork was successfully updated." }
+        format.html { redirect_to artwork_url(@artwork), notice: "Réalisation artistique mise à jour avec succès" }
         format.json { render :show, status: :ok, location: @artwork }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -54,7 +54,7 @@ class ArtworksController < ApplicationController
     @artwork.destroy
 
     respond_to do |format|
-      format.html { redirect_to artworks_url, notice: "Artwork was successfully destroyed." }
+      format.html { redirect_to artworks_url, notice: "Réalisation artistique supprimée avec succès" }
       format.json { head :no_content }
     end
   end

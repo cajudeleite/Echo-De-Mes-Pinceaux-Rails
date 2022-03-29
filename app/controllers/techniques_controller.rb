@@ -25,7 +25,7 @@ class TechniquesController < ApplicationController
 
     respond_to do |format|
       if @technique.save
-        format.html { redirect_to technique_url(@technique), notice: "Technique was successfully created." }
+        format.html { redirect_to technique_url(@technique), notice: "Technique publiée avec succès" }
         format.json { render :show, status: :created, location: @technique }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +38,7 @@ class TechniquesController < ApplicationController
   def update
     respond_to do |format|
       if @technique.update(technique_params)
-        format.html { redirect_to technique_url(@technique), notice: "Technique was successfully updated." }
+        format.html { redirect_to technique_url(@technique), notice: "Technique mise à jour avec succès" }
         format.json { render :show, status: :ok, location: @technique }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,7 +52,7 @@ class TechniquesController < ApplicationController
     @technique.destroy
 
     respond_to do |format|
-      format.html { redirect_to techniques_url, notice: "Technique was successfully destroyed." }
+      format.html { redirect_to techniques_url, notice: "Technique supprimée avec succès" }
       format.json { head :no_content }
     end
   end

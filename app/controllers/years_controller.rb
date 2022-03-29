@@ -25,7 +25,7 @@ class YearsController < ApplicationController
 
     respond_to do |format|
       if @year.save
-        format.html { redirect_to year_url(@year), notice: "Year was successfully created." }
+        format.html { redirect_to year_url(@year), notice: "Année publiée avec succès" }
         format.json { render :show, status: :created, location: @year }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +38,7 @@ class YearsController < ApplicationController
   def update
     respond_to do |format|
       if @year.update(year_params)
-        format.html { redirect_to year_url(@year), notice: "Year was successfully updated." }
+        format.html { redirect_to year_url(@year), notice: "Année mise à jour avec succès" }
         format.json { render :show, status: :ok, location: @year }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,7 +52,7 @@ class YearsController < ApplicationController
     @year.destroy
 
     respond_to do |format|
-      format.html { redirect_to years_url, notice: "Year was successfully destroyed." }
+      format.html { redirect_to years_url, notice: "Année supprimée avec succès" }
       format.json { head :no_content }
     end
   end
