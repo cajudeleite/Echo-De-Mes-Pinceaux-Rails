@@ -1,5 +1,4 @@
 <div class='artwork__item'>
-  <p id="notice"><%= notice %></p>
   <div class="artwork__item__top">
     <%= link_to artworks_path, class: 'artwork__item__top__back_button' do %>
       <i class="fa-solid fa-arrow-left-long artwork__item__top__back_button__left_arrow"></i>Revenir en arrière
@@ -48,6 +47,7 @@
         <span class="visually-hidden">Prochain</span>
       </button>
     </div>
+    <p id="notice"><%= notice %></p>
     <div class="artwork__item__content__text">
       <h1 class='artwork__item__content__text__title'>
         <%= @artwork.title %>

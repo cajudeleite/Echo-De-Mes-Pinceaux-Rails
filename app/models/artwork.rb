@@ -5,4 +5,5 @@ class Artwork < ApplicationRecord
   belongs_to :status
   belongs_to :user
   has_many_attached :photos
+  self.per_page = 10
 end
