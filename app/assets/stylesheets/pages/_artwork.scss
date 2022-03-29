@@ -87,7 +87,7 @@
     flex-direction: column;
     justify-content: center;
     position: relative;
-    top: 4rem;
+    top: 5rem;
     width: 100%;
     &__top {
       width: 100%;
@@ -323,10 +323,16 @@
       justify-content: center;
       padding: 1rem 2rem;
       align-items: center;
-      &__arrows {
-        font-size: 25px;
-        padding: 0 2rem;
-        cursor: pointer;
+      width: 100%;
+      em {
+        color: $sea-buckthorn;
+      }
+      a {
+        color: $pesto;
+        padding: 0 1rem;
+      }
+      a:hover {
+        color: $pesto;
       }
     }
   }
