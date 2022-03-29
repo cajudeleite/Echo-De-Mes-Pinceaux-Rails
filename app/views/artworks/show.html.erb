@@ -1,39 +1,69 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @artwork.title %>
-</p>
-
-<p>
-  <strong>Year:</strong>
-  <%= @artwork.year_id %>
-</p>
-
-<p>
-  <strong>Technique:</strong>
-  <%= @artwork.technique_id %>
-</p>
-
-<p>
-  <strong>Collection:</strong>
-  <%= @artwork.collection_id %>
-</p>
-
-<p>
-  <strong>Status:</strong>
-  <%= @artwork.status_id %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @artwork.description %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @artwork.user_id %>
-</p>
-
-<%= link_to 'Edit', edit_artwork_path(@artwork) %> |
-<%= link_to 'Back', artworks_path %>
+<div class='artwork__item'>
+  <p id="notice"><%= notice %></p>
+  <div class="artwork__item__top">
+    <%= link_to artworks_path, class: 'artwork__item__top__back_button' do %>
+      <i class="fa-solid fa-arrow-left-long artwork__item__top__back_button__left_arrow"></i>Revenir en arrière
+    <% end %>
+    <% if user_signed_in? %>
+      <div class="artwork__item__top__last_buttons">
+        <%= link_to edit_artwork_path(@artwork), class: 'artwork__item__top__last_buttons__edit' do %>
+          Modifier<i class="fa-solid fa-pencil artwork__item__top__last_buttons__edit__icon"></i>
+        <% end %>
+        <%= link_to @artwork, method: :delete, data: { confirm: 'Voulez-vous vraiment supprimer cette réalisation artistique?' }, class: 'artwork__item__top__last_buttons__delete' do %>
+          Supprimer<i class="fa-solid fa-trash-can artwork__item__top__last_buttons__delete__icon"></i>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+  <div class="artwork__item__content">
+    <div id="carouselExampleIndicators" class="carousel slide w-50" data-bs-ride="carousel">
+      <div class="carousel-indicators">
+        <% @artwork.photos.each_with_index do |photo, index| %>
+          <% if index == 0 %>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="<%= index %>" class="active" aria-current="true" aria-label="Slide <%= index + 1 %>"></button>
+          <% else %>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="<%= index %>" aria-label="Slide <%= index + 1 %>"></button>
+          <% end %>
+        <% end %>
+      </div>
+      <div class="carousel-inner">
+        <% @artwork.photos.each_with_index do |photo, index| %>
+          <% if index == 0 %>
+            <div class="carousel-item active artwork__item__content__photo">
+              <%= cl_image_tag photo.key, crop: :fill, class: 'artwork__item__content__photo__image' %>
+            </div>
+          <% else %>
+            <div class="carousel-item artwork__item__content__photo">
+              <%= cl_image_tag photo.key, crop: :fill, class: 'artwork__item__content__photo__image' %>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Précédent</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Prochain</span>
+      </button>
+    </div>
+    <div class="artwork__item__content__text">
+      <h1 class='artwork__item__content__text__title'>
+        <%= @artwork.title %>
+      </h1>
+      <p class='artwork__item__content__text__dateandtechnique'>
+        <%= @artwork.year.name %> / <%= @artwork.technique.name %>
+      </p>
+      <p class='artwork__item__content__text__collection'>
+        <%= @artwork.collection.name %>
+      </p>
+      <p class='artwork__item__content__text__status'>
+        <%= @artwork.status.name %>
+      </p>
+      <p class='artwork__item__content__text__description'>
+        <%= simple_format(@artwork.description) %>
+      </p>
+    </div>
+  </div>
+</div>

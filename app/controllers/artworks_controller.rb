@@ -1,5 +1,7 @@
+include ActionView::Helpers::TextHelper
 class ArtworksController < ApplicationController
   before_action :set_artwork, only: %i[ show edit update destroy ]
+  skip_before_action :authenticate_user!, :only => [:index, :show]
 
   # GET /artworks or /artworks.json
   def index
@@ -22,7 +24,7 @@ class ArtworksController < ApplicationController
   # POST /artworks or /artworks.json
   def create
     @artwork = Artwork.new(artwork_params)
-
+    @artwork.user_id = current_user.id
     respond_to do |format|
       if @artwork.save
         format.html { redirect_to artwork_url(@artwork), notice: "Artwork was successfully created." }
@@ -65,6 +67,6 @@ class ArtworksController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def artwork_params
-      params.require(:artwork).permit(:title, :year_id, :technique_id, :collection_id, :status_id, :description, :user_id)
+      params.require(:artwork).permit(:title, :year_id, :technique_id, :collection_id, :status_id, :description, photos: [])
     end
 end

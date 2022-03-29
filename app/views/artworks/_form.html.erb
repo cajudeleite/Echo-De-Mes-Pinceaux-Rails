@@ -1,19 +1,15 @@
-
-<%= simple_form_for(@artwork) do |f| %>
+<%= simple_form_for @artwork, :html=> { class: 'form__container__form' } do |f| %>
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
-
-  <div class="form-inputs">
-    <%= f.input :title %>
-    <%= f.association :year %>
-    <%= f.association :technique %>
-    <%= f.association :collection %>
-    <%= f.association :status %>
-    <%= f.input :description %>
-    <%= f.association :user %>
+  <%= f.input :title, wrapper_html: { class: 'form__container__form__input__text' }, input_html: { class: 'form__container__form__input__text__input' }, label_html: { class: 'form__container__form__input__text__label' }, label: 'Titre' %>
+  <%= f.association :year, wrapper_html: { class: 'form__container__form__input__dropdown' }, input_html: { class: 'form__container__form__input__dropdown__select' }, label_html: { class: 'form__container__form__input__dropdown__label' }, label: 'Année' %>
+  <%= f.association :technique, wrapper_html: { class: 'form__container__form__input__dropdown' }, input_html: { class: 'form__container__form__input__dropdown__select' }, label_html: { class: 'form__container__form__input__dropdown__label' }, label: 'Technique' %>
+  <%= f.association :collection, wrapper_html: { class: 'form__container__form__input__dropdown' }, input_html: { class: 'form__container__form__input__dropdown__select' }, label_html: { class: 'form__container__form__input__dropdown__label' }, label: 'Collection' %>
+  <%= f.association :status, wrapper_html: { class: 'form__container__form__input__dropdown' }, input_html: { class: 'form__container__form__input__dropdown__select' }, label_html: { class: 'form__container__form__input__dropdown__label' }, label: 'Statut' %>
+  <%= f.input :photos, wrapper_html: { class: 'form__container__form__input__dropdown' }, input_html: { class: 'form__container__form__input__dropdown__select' }, label_html: { class: 'form__container__form__input__dropdown__label' }, as: :file, input_html: { multiple: true }, label: 'Photo' %>
+  <div class="form__container__form__input__textarea">
+    <label htmlFor='description' class='form__container__form__input__textarea__label'>Descrition</label>
+    <%= f.text_area :description, class: 'form__container__form__input__textarea__input' %>
   </div>
-
-  <div class="form-actions">
-    <%= f.button :submit %>
-  </div>
+  <%= f.button :submit, class: 'form__container__form__submit', value: 'Publier' %>
 <% end %>

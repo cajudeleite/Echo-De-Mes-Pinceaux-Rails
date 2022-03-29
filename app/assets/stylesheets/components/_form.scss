@@ -1,0 +1,198 @@
+.form {
+  width: 100%;
+  min-height: calc(100vh - 5rem);
+  margin-top: 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &__container {
+    border-radius: 5px;
+    width: 50%;
+    height: fit-content;
+    background-color: $pampas;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 3rem 0;
+    &__back_button {
+      text-align: left;
+      padding: 1rem 0 0 1rem;
+      color: $pesto;
+      background: none;
+      border: none;
+      font-family: $title;
+      font-size: 23px;
+      text-decoration: none;
+      &__icon {
+        margin-right: 1rem;
+      }
+    }
+    &__back_button:hover {
+      color: $pesto;
+    }
+    &__title {
+      font-family: $title;
+      font-size: 30px;
+      font-weight: 700;
+      text-align: center;
+      padding: 2rem 0;
+      margin: 0;
+    }
+    &__form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-bottom: 2rem;
+      &__input {
+        &__text {
+          width: 80%;
+          display: flex;
+          flex-direction: column;
+          padding-bottom: 1rem;
+          margin: 0 !important;
+          &__label {
+            padding-bottom: 5px;
+          }
+          &__label::after {
+            content: ' :';
+          }
+          &__input {
+            border-radius: 5px;
+            border: 1px solid $pesto;
+            height: 2rem;
+            background-color: white;
+          }
+        }
+        &__dropdown {
+          width: 80%;
+          display: flex;
+          flex-direction: column;
+          padding-bottom: 1rem;
+          margin: 0 !important;
+          &__label {
+            padding-bottom: 5px;
+          }
+          &__label::after {
+            content: ' :';
+          }
+          &__select {
+            border-radius: 5px;
+            border: 1px solid $pesto;
+            height: 2rem;
+            background-color: white;
+          }
+        }
+        &__file {
+          width: 80%;
+          display: flex;
+          flex-direction: column;
+          padding-bottom: 1rem;
+          &__label {
+            padding-bottom: 5px;
+          }
+          &__label::after {
+            content: ' :';
+          }
+        }
+        &__textarea {
+          width: 80%;
+          display: flex;
+          flex-direction: column;
+          padding-bottom: 1rem;
+          &__label {
+            padding-bottom: 5px;
+          }
+          &__label::after {
+            content: ' :';
+          }
+          &__input {
+            height: 5rem;
+            overflow: auto;
+            resize: vertical;
+          }
+        }
+      }
+      &__photo_preview {
+        justify-content: center;
+        display: flex;
+        flex-wrap: wrap;
+        img {
+          object-fit: cover;
+          border-radius: 5px;
+          border: 15px solid $rock-spray;
+          border-style: double;
+          background-color: #DF9C34;
+          margin: 1rem;
+        }
+      }
+      &__submit {
+        color: $rock-spray;
+        background-color: $sea-buckthorn;
+        border: none;
+        border-radius: 5px;
+        font-size: 27px;
+        font-family: $title;
+        height: 3rem;
+        padding: 0 1rem;
+        margin: 1rem 0 0;
+        cursor: pointer;
+      }
+      &__modal {
+        margin: 3rem 0;
+        border-radius: 5px;
+        width: 50%;
+        height: fit-content;
+        background-color: $pampas;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        &__title {
+          font-family: $title;
+          font-size: 25px;
+          font-weight: 600;
+          text-align: center;
+          padding: 2rem 0;
+        }
+        &__form {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          padding-bottom: 2rem;
+          &__label {
+            padding-bottom: 5px;
+          }
+          &__label::after {
+            content: ' :';
+          }
+          &__input {
+            border-radius: 5px;
+            border: 1px solid $pesto;
+            height: 2rem;
+          }
+          &__submit {
+            color: $rock-spray;
+            background-color: $sea-buckthorn;
+            border: none;
+            border-radius: 5px;
+            font-size: 20px;
+            font-family: $title;
+            height: 2rem;
+            padding: 0 1rem;
+            margin: 1rem 0 0;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .artwork_form {
+    &__container {
+      width: 100%;
+      margin: 0;
+      border-radius: 0;
+    }
+  }
+}

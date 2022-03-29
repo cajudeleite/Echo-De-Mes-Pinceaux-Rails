@@ -1,0 +1,394 @@
+.artwork {
+  align-self: center;
+  width: 70%;
+  background-color: $pampas;
+  position: relative;
+  top: 5rem;
+  &__disclaimer {
+    font-family: $title;
+    text-align: center;
+    color: $rock-spray;
+    font-size: 30px;
+    padding: 1rem 2rem;
+    font-weight: bold;
+  }
+  &__create {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    &__button {
+      color: $rock-spray;
+      background-color: $sea-buckthorn;
+      border: none;
+      border-radius: 5px;
+      font-size: 25px;
+      font-family: $title;
+      height: 3rem;
+      padding: 0 1rem;
+      margin: 1rem 0 0;
+      cursor: pointer;
+      &__plus {
+        font-weight: bold;
+        margin-left: 7px;
+      }
+    }
+  }
+  &__filters {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    padding: 1rem;
+    transition: all 1s ease 0s;
+    &__type, &__value {
+      align-items: center;
+      &__label {
+        padding-right: 1rem;
+      }
+      &__select {
+        border-radius: 5px;
+        border: 1px solid $pesto;
+        height: 2rem;
+        min-width: 8rem;
+      }
+    }
+    &__submit {
+      color: $sea-buckthorn;
+      background-color: $rock-spray;
+      border: none;
+      border-radius: 5px;
+      font-size: 20px;
+      font-family: $title;
+      height: 2rem;
+      padding: 0 1rem;
+      margin-left: 2rem;
+    }
+  }
+  &__list {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    &__photo {
+      cursor: pointer;
+      margin: 2rem;
+      border-radius: 5px;
+      border: 15px solid $rock-spray;
+      border-style: double;
+      background-color: $sea-buckthorn;
+      max-height: 300px;
+      max-width: 95%;
+      width: auto;
+      height: auto;
+    }
+  }
+  &__item {
+    flex-wrap: wrap;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    top: 4rem;
+    width: 100%;
+    &__top {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      padding: 1rem 2rem;
+      background-color: $pampas;
+      &__back_button {
+        color: $pesto;
+        background: none;
+        border: none;
+        font-family: $title;
+        font-size: 23px;
+        text-decoration: none;
+        &__left_arrow {
+          margin-right: 1rem;
+        }
+      }
+      &__back_button:hover {
+        color: $pesto;
+      }
+      &__last_buttons {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        &__edit, &__delete {
+          border: none;
+          border-radius: 5px;
+          font-size: 20px;
+          font-family: $title;
+          height: 2rem;
+          padding: 0 1rem;
+          text-decoration: none;
+          &__icon {
+            margin-left: 7px;
+          }
+        }
+        &__edit {
+          color: $rock-spray;
+          background-color: $sea-buckthorn;
+        }
+        &__edit:hover {
+          color: $rock-spray;
+        }
+        &__delete {
+          color: $sea-buckthorn;
+          background-color: $rock-spray;
+          margin-left: 2rem;
+        }
+        &__delete:hover {
+          color: $sea-buckthorn;
+        }
+      }
+    }
+    &__content {
+      display: flex;
+      background-color: $pampas;
+      &__photo {
+        background-color: $pampas;
+        height: 100%;
+        height: fit-content;
+        padding: 0 2rem 1rem;
+        &__image {
+          object-fit: cover;
+          min-height: 250px;
+          width: 100%;
+          border-radius: 5px;
+          border: 15px solid $rock-spray;
+          border-style: double;
+          background-color: #DF9C34;
+        }
+      }
+      &__text {
+        background-color: $pampas;
+        padding-right: 3rem;
+        width: 50%;
+        height: 100%;
+        justify-items: flex-start;
+        display: flex;
+        flex-direction: column;
+        &__title {
+          font-family: $title;
+          font-size: 2rem;
+          font-weight: bold;
+          color: $rock-spray;
+          padding-bottom: 1rem;
+        }
+        &__title::first-letter {
+          text-transform: uppercase;
+        }
+        &__dateandtechnique {
+          font-style: italic;
+          padding-bottom: 1rem;
+        }
+        &__collection {
+          padding-bottom: 1rem;
+        }
+        &__status {
+          color: $pewter;
+          padding-bottom: 1rem;
+        }
+        &__description {
+          text-align: justify;
+          text-justify: inter-word;
+          line-height: 2rem;
+          padding-bottom: 7px;
+          &__hyperlink {
+            color: $rock-spray;
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+    &__comments {
+      width: 100%;
+      &__title {
+        font-family: $title;
+        color: $rock-spray;
+        text-align: center;
+        font-size: 30px;
+        padding: 3rem 0 1rem;
+        background-color: $pampas;
+      }
+      &__form_container {
+        background-color: $pampas;
+        width: 100%;
+        padding: 1rem 2rem;
+        display: flex;
+        justify-content: center;
+        &__form {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          align-items: baseline;
+          &__username, &__message {
+            padding: 1rem 1rem 1rem 0;
+            &__label {
+              padding-right: 1rem;
+            }
+          }
+          &__submit {
+            color: $rock-spray;
+            background-color: $sea-buckthorn;
+            border: none;
+            border-radius: 5px;
+            font-size: 20px;
+            font-family: $title;
+            height: 2rem;
+            padding: 0 1rem;
+            margin-left: 1rem;
+            cursor: pointer;
+          }
+        }
+      }
+      &__list {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 100%;
+        padding: 0 2rem;
+        background: none;
+        &__title {
+          width: 100%;
+          font-family: $title;
+          background-color: $pampas;
+          text-align: center;
+          font-size: 30px;
+          font-weight: bold;
+          padding: 2rem 0;
+          margin: 2rem 0;
+        }
+        &__item {
+          margin: 2rem 0;
+          display: flex;
+          &__name {
+            background-color: $pampas;
+            width: 15%;
+            border-radius: 5px 0 0 5px;
+            border-bottom: 5px solid $sea-buckthorn;
+            border-left: 5px solid $sea-buckthorn;
+            border-right: 2px solid $sea-buckthorn;
+            border-top: 5px solid $sea-buckthorn;
+            padding: 1rem;
+            font-weight: 600;
+          }
+          &__message {
+            width: 85%;
+            display: flex;
+            flex-direction: column;
+            &__date {
+              background-color: $pampas;
+              color: $rock-spray;
+              display: flex;
+              border-bottom: 2px solid $sea-buckthorn;
+              border-left: 1px solid $sea-buckthorn;
+              border-right: 5px solid $sea-buckthorn;
+              border-top: 5px solid $sea-buckthorn;
+              border-radius: 0 5px 0 0;
+              padding: 1rem;
+              align-items: flex-end;
+              font-family: $title;
+              font-size: 20px;
+              font-weight: bold;
+            }
+            &__delete {
+              background: none;
+              border: none;
+              color: $rock-spray;
+              font-size: 20px;
+              position: absolute;
+              right: 3rem;
+              &__trash {
+                position: relative;
+                top: 18px;
+              }
+            }
+            &__text {
+              border-radius: 0 0 5px 0;
+              border-bottom: 5px solid $sea-buckthorn;
+              border-left: 1px solid $sea-buckthorn;
+              border-right: 5px solid $sea-buckthorn;
+              border-top: 1px solid $sea-buckthorn;
+              background-color: $pewter;
+              height: 100%;
+              padding: 1rem;
+            }
+          }
+        }
+      }
+    }
+    &__page {
+      display: flex;
+      justify-content: center;
+      padding: 1rem 2rem;
+      align-items: center;
+      &__arrows {
+        font-size: 25px;
+        padding: 0 2rem;
+        cursor: pointer;
+      }
+    }
+  }
+  &__message {
+    text-align: center;
+    padding: 2rem 1rem;
+  }
+}
+
+@media screen and(max-width: 767px) {
+  .artwork {
+    width: 100%;
+    &__item {
+      &__content {
+        flex-direction: column  ;
+        &__photo {
+          width: 100%;
+        }
+        &__text {
+          width: 100%;
+          padding: 1rem 2rem;
+        }
+      }
+      &__comments {
+        &__list {
+          &__item {
+            flex-direction: column;
+            &__name {
+              width: 100%;
+              border-radius: 5px 5px 0 0;
+              border-bottom: 2px solid $sea-buckthorn;
+              border-right: 5px solid $sea-buckthorn;
+            }
+            &__message {
+              width: 100%;
+              &__date {
+                border-left: 5px solid $sea-buckthorn;
+                border-top: 2px solid $sea-buckthorn;
+                border-radius: 0;
+              }
+              &__text {
+                border-radius: 0 0 5px 5px;
+                border-left: 5px solid $sea-buckthorn;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and(max-width: 540px) {
+  .artwork {
+    &__item {
+      &__top {
+        &__last_buttons {
+          &__edit, &__delete {
+            height: 4rem;
+          }
+        }
+      }
+    }
+  }
+}
