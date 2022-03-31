@@ -1,27 +1,21 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Years</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
+<section class='category'>
+  <% if user_signed_in? %>
+    <div class="category__create">
+      <%= button_to new_year_path, class: 'category__create__button', :method => "get" do %>
+        Nouvelle Année<i class="fa-solid fa-plus category__create__button__plus"></i>
+      <% end %>
+    </div>
+  <% end %>
+  <h2 class='category__disclaimer'>Années</h2>
+  <div class="category__list">
     <% @years.each do |year| %>
-      <tr>
-        <td><%= year.name %></td>
-        <td><%= link_to 'Show', year %></td>
-        <td><%= link_to 'Edit', edit_year_path(year) %></td>
-        <td><%= link_to 'Destroy', year, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+      <div class="category__list__item">
+        <%= link_to year, method: :delete, data: { confirm: 'Are you sure?' }, class: 'category__list__item__delete' do %>
+          <i class="fa-solid fa-xmark category__list__item__delete__icon"></i>
+        <% end %>
+        <h3 class="category__list__item__title"><%= year.name %></h3>
+        <%= button_to 'Modifier', edit_year_path(year) %>
+      </div>
     <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Year', new_year_path %>
+  </div>
+</section>
