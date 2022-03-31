@@ -1,30 +1,48 @@
 <section class="navbar">
   <div class="navbar__logo">
-    <a class="navbar__logo__text" href='/'>ECHO DE MES PINCEAUX</a>
+    <%= link_to 'ECHO DE MES PINCEAUX', root_path, class: 'navbar__logo__text' %>
   </div>
   <div class="navbar__items">
     <div class="navbar__items__link">
-      <a class="navbar__items__link__text" href='/'>Accueil</a>
+      <%= link_to 'Accueil', root_path, class: 'navbar__items__link__text' %>
     </div>
     <div class="navbar__items__link">
-      <a class="navbar__items__link__text" href='/artworks'>Galerie</a>
+      <%= link_to 'Galerie', artworks_path, class: 'navbar__items__link__text' %>
     </div>
-    <div class="navbar__items__link">
-      <a class="navbar__items__link__text" href='/contacts'>Contact</a>
-    </div>
+    <% if user_signed_in? %>
+      <div class="navbar__items__link">
+        <%= link_to 'Administrateur', admin_path, class: 'navbar__items__link__text' %>
+      </div>
+      <div class="navbar__items__link">
+        <%= link_to 'Se déconnecter', destroy_user_session_path, class: 'navbar__items__link__text', method: :delete %>
+      </div>
+    <% else %>
+      <div class="navbar__items__link">
+        <%= link_to 'Contact', new_contact_path, class: 'navbar__items__link__text' %>
+      </div>
+    <% end %>
   </div>
   <div class="navbar__burger">
     <button class='navbar__burger__button'><i class="fa-solid fa-bars navbar__burger__button__icon"></i></button>
     <div id='sidebar' class='navbar__burger__sidebar hidden'>
       <div class="navbar__items__link">
-        <a class="navbar__items__link__text" href='/'>Accueil</a>
+        <%= link_to 'Accueil', root_path, class: 'navbar__items__link__text' %>
       </div>
       <div class="navbar__items__link">
-        <a class="navbar__items__link__text" href='/artworks'>Galerie</a>
+        <%= link_to 'Galerie', artworks_path, class: 'navbar__items__link__text' %>
       </div>
-      <div class="navbar__items__link">
-        <a class="navbar__items__link__text" href='/contacts'>Contact</a>
-      </div>
+      <% if user_signed_in? %>
+        <div class="navbar__items__link">
+          <%= link_to 'Administrateur', admin_path, class: 'navbar__items__link__text' %>
+        </div>
+        <div class="navbar__items__link">
+          <%= link_to 'Se déconnecter', destroy_user_session_path, class: 'navbar__items__link__text', method: :delete %>
+        </div>
+      <% else %>
+        <div class="navbar__items__link">
+          <%= link_to 'Contact', new_contact_path, class: 'navbar__items__link__text' %>
+        </div>
+      <% end %>
     </div>
     <div id='filter' class="filter hidden"></div>
   </div>

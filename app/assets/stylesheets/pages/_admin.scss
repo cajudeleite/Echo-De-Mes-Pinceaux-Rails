@@ -1,0 +1,49 @@
+.admin {
+  align-self: center;
+  width: 70%;
+  background-color: $pampas;
+  position: relative;
+  top: 5rem;
+  &__disclaimer {
+    font-family: $title;
+    text-align: center;
+    color: $rock-spray;
+    font-size: 30px;
+    padding: 1rem 2rem;
+    font-weight: bold;
+  }
+  &__list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+    padding-bottom: 3rem;
+    &__item {
+      align-content: center;
+      color: $rock-spray;
+      background-color: $sea-buckthorn;
+      border: none;
+      border-radius: 5px;
+      font-size: 25px;
+      font-family: $title;
+      height: 3rem;
+      padding: 0 1rem;
+      margin: 1rem 0 0;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+    }
+  }
+}
+
+.button_to {
+  display: flex;
+  justify-content: center;
+}
+
+@media screen and(max-width: 767px) {
+  .admin {
+    width: 100%;
+  }
+}

@@ -1,0 +1,14 @@
+<% if !user_signed_in? %>
+  <% redirect_to user_session_path%>
+<% end %>
+<section class="admin">
+  <h1 class="admin__disclaimer">Page d'administration</h1>
+  <div class="admin__list">
+    <%= button_to 'Années', years_path, class: 'admin__list__item', method: :get %>
+    <%= button_to 'Techniques', techniques_path, class: 'admin__list__item', method: :get %>
+    <%= button_to 'Collections',collections_path, class: 'admin__list__item', method: :get %>
+    <%= button_to 'Statuts', statuses_path, class: 'admin__list__item', method: :get %>
+    <%= button_to 'Messages de contact', contacts_path, class: 'admin__list__item', method: :get %>
+    <%= button_to 'Se déconnecter', destroy_user_session_path, class: 'admin__list__item', method: :delete %>
+  </div>
+</section>
