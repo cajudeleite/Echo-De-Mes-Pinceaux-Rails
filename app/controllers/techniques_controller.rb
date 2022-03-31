@@ -3,7 +3,7 @@ class TechniquesController < ApplicationController
 
   # GET /techniques or /techniques.json
   def index
-    @techniques = Technique.all
+    @techniques = Technique.order(:name)
   end
 
   # GET /techniques/1 or /techniques/1.json

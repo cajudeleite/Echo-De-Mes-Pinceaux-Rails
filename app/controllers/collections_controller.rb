@@ -3,7 +3,7 @@ class CollectionsController < ApplicationController
 
   # GET /collections or /collections.json
   def index
-    @collections = Collection.all
+    @collections = Collection.order(:name)
   end
 
   # GET /collections/1 or /collections/1.json

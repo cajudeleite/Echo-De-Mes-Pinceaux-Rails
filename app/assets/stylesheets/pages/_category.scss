@@ -33,4 +33,30 @@
       }
     }
   }
+  &__list {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    &__item {
+      background-color: $sea-buckthorn;
+      border: solid 4px $rock-spray;
+      border-radius: 5px;
+      display: flex;
+      padding: 0 2rem 1rem;
+      margin: 1rem;
+      flex-direction: column;
+      &__delete {
+        position: relative;
+        left: calc(100% + 1rem);
+        top: 3px;
+        width: fit-content;
+        &__icon {
+          color: $rock-spray;
+        }
+      }
+      &__title {
+        text-align: center;
+      }
+    }
+  }
 }

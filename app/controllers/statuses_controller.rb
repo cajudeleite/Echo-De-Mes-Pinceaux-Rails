@@ -3,7 +3,7 @@ class StatusesController < ApplicationController
 
   # GET /statuses or /statuses.json
   def index
-    @statuses = Status.all
+    @statuses = Status.order(:name)
   end
 
   # GET /statuses/1 or /statuses/1.json
