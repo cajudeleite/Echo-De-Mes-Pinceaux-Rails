@@ -5,7 +5,7 @@ class ArtworksController < ApplicationController
 
   # GET /artworks or /artworks.json
   def index
-    @artworks = Artwork.paginate(page: params[:page], :per_page => 10)
+    @artworks = Artwork.order(created_at: :desc).paginate(page: params[:page], :per_page => 10)
   end
 
   # GET /artworks/1 or /artworks/1.json
