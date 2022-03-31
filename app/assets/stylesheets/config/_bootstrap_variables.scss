@@ -18,3 +18,18 @@ $border-radius-lg: 2px;
 $border-radius-sm: 2px;
 
 // Override other variables below!
+
+$carousel-control-color: $rock-spray;
+$carousel-control-opacity: .7;
+$carousel-control-icon-width: 50px;
+.carousel-control-prev {
+  margin-left: 1rem !important;
+}
+.carousel-control-next {
+  margin-right: 1rem !important;
+}
+$carousel-transition-duration: .10s;
+$carousel-indicator-active-bg: $rock-spray;
+.carousel-indicators {
+  margin-bottom: 2rem !important;
+}
