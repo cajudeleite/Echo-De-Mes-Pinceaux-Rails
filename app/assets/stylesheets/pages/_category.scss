@@ -1,0 +1,36 @@
+.category {
+  align-self: center;
+  width: 100%;
+  background-color: $pampas;
+  position: relative;
+  top: 5rem;
+  &__disclaimer {
+    font-family: $title;
+    text-align: center;
+    color: $rock-spray;
+    font-size: 30px;
+    padding: 1rem 2rem;
+    font-weight: bold;
+  }
+  &__create {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    &__button {
+      color: $rock-spray;
+      background-color: $sea-buckthorn;
+      border: none;
+      border-radius: 5px;
+      font-size: 25px;
+      font-family: $title;
+      height: 3rem;
+      padding: 0 1rem;
+      margin: 1rem 0 0;
+      cursor: pointer;
+      &__plus {
+        font-weight: bold;
+        margin-left: 7px;
+      }
+    }
+  }
+}

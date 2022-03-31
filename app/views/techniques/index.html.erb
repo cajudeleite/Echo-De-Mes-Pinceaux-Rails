@@ -1,4 +1,19 @@
-<p id="notice"><%= notice %></p>
+<section class='category'>
+  <% if user_signed_in? %>
+    <div class="category__create">
+      <%= button_to new_technique_path, class: 'category__create__button', :method => "get" do %>
+        Nouvelle Technique<i class="fa-solid fa-plus category__create__button__plus"></i>
+      <% end %>
+    </div>
+  <% end %>
+  <h2 class='category__disclaimer'>Techniques</h2>
+  <div class="category__list">
+    <% @techniques.each do |technique| %>
+
+    <% end %>
+  </div>
+</section>
+
 
 <h1>Techniques</h1>
 
