@@ -184,6 +184,15 @@
         }
       }
     }
+    &__links {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      margin: 0 0 2rem;
+      a {
+        color: $rock-spray;
+      }
+    }
   }
 }
 
