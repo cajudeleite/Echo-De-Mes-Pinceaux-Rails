@@ -1,6 +1,9 @@
-<h1>Editing Year</h1>
-
-<%= render 'form', year: @year %>
-
-<%= link_to 'Show', @year %> |
-<%= link_to 'Back', years_path %>
+<section class="form">
+  <div class="form__container">
+    <%= link_to years_path, class: "form__container__back_button" do %>
+      <i class="fa-solid fa-arrow-left-long form__container__back_button__icon"></i>Revenir en arrière
+    <% end %>
+    <h1 class='form__container__title'>Modifier année</h1>
+    <%= render 'form', year: @year %>
+  </div>
+</section>

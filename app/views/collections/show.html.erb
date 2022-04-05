@@ -1,9 +1,9 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @collection.name %>
-</p>
-
-<%= link_to 'Edit', edit_collection_path(@collection) %> |
-<%= link_to 'Back', collections_path %>
+<section class="form">
+  <div class="form__container">
+    <%= link_to collections_path, class: "form__container__back_button" do %>
+      <i class="fa-solid fa-arrow-left-long form__container__back_button__icon"></i>Revenir en arrière
+    <% end %>
+    <h1 class='form__container__title'>Modifier collection</h1>
+    <%= render 'form', collection: @collection %>
+  </div>
+</section>

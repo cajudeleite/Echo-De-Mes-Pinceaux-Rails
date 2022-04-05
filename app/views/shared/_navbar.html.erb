@@ -1,3 +1,4 @@
+<script src='burger.js' defer></script>
 <section class="navbar">
   <div class="navbar__logo">
     <%= link_to 'ECHO DE MES PINCEAUX', root_path, class: 'navbar__logo__text' %>
@@ -47,12 +48,3 @@
     <div id='filter' class="filter hidden"></div>
   </div>
 </section>
-<script>
-  const burger = document.getElementsByClassName('navbar__burger__button');
-  const sidebar = document.getElementById('sidebar');
-  const filter = document.getElementById('filter');
-  burger[0].addEventListener('click', () => {
-    sidebar.classList.toggle('hidden');
-    filter.classList.toggle('hidden');
-  });
-</script>

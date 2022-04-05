@@ -1,5 +1,6 @@
 class ContactsController < ApplicationController
   before_action :set_contact, only: %i[ show edit update destroy ]
+  skip_before_action :authenticate_user!, :only => [:create, :new]
 
   # GET /contacts or /contacts.json
   def index
@@ -16,8 +17,6 @@ class ContactsController < ApplicationController
   end
 
   # GET /contacts/1/edit
-  def edit
-  end
 
   # POST /contacts or /contacts.json
   def create
@@ -25,7 +24,7 @@ class ContactsController < ApplicationController
 
     respond_to do |format|
       if @contact.save
-        format.html { redirect_to contact_url(@contact), notice: "Contact was successfully created." }
+        format.html { redirect_to root_path, notice: "Contact was successfully created." }
         format.json { render :show, status: :created, location: @contact }
       else
         format.html { render :new, status: :unprocessable_entity }

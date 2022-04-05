@@ -1,4 +1,7 @@
 <section class='category'>
+  <%= link_to admin_path, class: 'category__back_button' do %>
+    <i class="fa-solid fa-arrow-left-long category__back_button__left_arrow"></i>Revenir en arrière
+  <% end %>
   <% if user_signed_in? %>
     <div class="category__create">
       <%= button_to new_status_path, class: 'category__create__button', :method => "get" do %>
@@ -14,7 +17,7 @@
           <i class="fa-solid fa-xmark category__list__item__delete__icon"></i>
         <% end %>
         <h3 class="category__list__item__title"><%= status.name %></h3>
-        <%= button_to 'Modifier', edit_status_path(status) %>
+        <%= button_to 'Modifier', edit_status_path(status), class: 'category__list__item__button', :method => "get" %>
       </div>
     <% end %>
   </div>

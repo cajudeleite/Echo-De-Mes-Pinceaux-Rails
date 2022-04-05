@@ -1,17 +1,13 @@
-
-<%= simple_form_for(@contact) do |f| %>
+<%= simple_form_for @contact, :html=> { class: 'form__container__form' } do |f| %>
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
-
-  <div class="form-inputs">
-    <%= f.input :last_name %>
-    <%= f.input :first_name %>
-    <%= f.input :e_mail %>
-    <%= f.input :title %>
-    <%= f.input :message %>
+  <%= f.input :last_name, wrapper_html: { class: 'form__container__form__input__text' }, input_html: { class: 'form__container__form__input__text__input' }, label_html: { class: 'form__container__form__input__text__label' }, label: 'Nom' %>
+  <%= f.input :first_name, wrapper_html: { class: 'form__container__form__input__text' }, input_html: { class: 'form__container__form__input__text__input' }, label_html: { class: 'form__container__form__input__text__label' }, label: 'Prénom' %>
+  <%= f.input :e_mail, type: 'email', wrapper_html: { class: 'form__container__form__input__text' }, input_html: { class: 'form__container__form__input__text__input' }, label_html: { class: 'form__container__form__input__text__label' }, label: 'Couriel' %>
+  <%= f.input :title, wrapper_html: { class: 'form__container__form__input__text' }, input_html: { class: 'form__container__form__input__text__input' }, label_html: { class: 'form__container__form__input__text__label' }, label: 'Titre' %>
+  <div class="form__container__form__input__textarea">
+    <label htmlFor='message' class='form__container__form__input__textarea__label'>Message</label>
+    <%= f.text_area :message, class: 'form__container__form__input__textarea__input' %>
   </div>
-
-  <div class="form-actions">
-    <%= f.button :submit %>
-  </div>
+  <%= f.button :submit, class: 'form__container__form__submit', value: 'Publier' %>
 <% end %>

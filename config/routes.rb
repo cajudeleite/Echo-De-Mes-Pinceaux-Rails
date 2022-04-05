@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :contacts
+  resources :contacts, except: [:edit, :update]
   resources :comments
   resources :artworks
   resources :statuses

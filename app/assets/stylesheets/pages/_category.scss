@@ -4,6 +4,23 @@
   background-color: $pampas;
   position: relative;
   top: 5rem;
+  &__back_button {
+    color: $pesto;
+    background: none;
+    border: none;
+    font-family: $title;
+    font-size: 23px;
+    text-decoration: none;
+    position: relative;
+    left: 2rem;
+    top: 1rem;
+    &__left_arrow {
+      margin-right: 1rem;
+    }
+  }
+  &__back_button:hover {
+    color: $pesto;
+  }
   &__disclaimer {
     font-family: $title;
     text-align: center;
@@ -56,6 +73,17 @@
       }
       &__title {
         text-align: center;
+      }
+      &__button {
+        border: none;
+        border-radius: 5px;
+        font-size: 20px;
+        font-family: $title;
+        height: 2rem;
+        padding: 0 1rem;
+        text-decoration: none;
+        background-color: $rock-spray;
+        color: $sea-buckthorn;
       }
     }
   }
