@@ -146,6 +146,9 @@
       display: flex;
       background-color: $pampas;
       &__photo {
+        #carouselExampleIndicators {
+          width: 50%;
+        }
         background-color: $pampas;
         height: 100%;
         height: fit-content;
@@ -351,6 +354,9 @@
       &__content {
         flex-direction: column  ;
         &__photo {
+          #carouselExampleIndicators {
+            width: 100%;
+          }
           width: 100%;
         }
         &__text {
