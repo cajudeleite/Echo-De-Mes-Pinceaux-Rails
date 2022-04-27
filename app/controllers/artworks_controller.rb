@@ -8,6 +8,12 @@ class ArtworksController < ApplicationController
     @artworks = Artwork.order(created_at: :desc).paginate(page: params[:page], :per_page => 10)
   end
 
+  # GET /artworks/search or /artworks/search.json
+  def filter
+    @artworks = Artwork.where(filter_params).order(created_at: :desc).paginate(page: params[:page], :per_page => 10)
+    render :index
+  end
+
   # GET /artworks/1 or /artworks/1.json
   def show
   end
@@ -68,5 +74,9 @@ class ArtworksController < ApplicationController
     # Only allow a list of trusted parameters through.
     def artwork_params
       params.require(:artwork).permit(:title, :year_id, :technique_id, :collection_id, :status_id, :description, photos: [])
+    end
+
+    def filter_params
+      params.permit(:technique_id, :collection_id, :status_id)
     end
 end

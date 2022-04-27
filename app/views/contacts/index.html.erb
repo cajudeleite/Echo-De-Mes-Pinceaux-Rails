@@ -1,34 +1,29 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Contacts</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Last name</th>
-      <th>First name</th>
-      <th>E mail</th>
-      <th>Title</th>
-      <th>Message</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @contacts.each do |contact| %>
-      <tr>
-        <td><%= contact.last_name %></td>
-        <td><%= contact.first_name %></td>
-        <td><%= contact.e_mail %></td>
-        <td><%= contact.title %></td>
-        <td><%= contact.message %></td>
-        <td><%= link_to 'Show', contact %></td>
-        <td><%= link_to 'Destroy', contact, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+<section class="contact">
+  <%= link_to admin_path, class: 'contact__back_button' do %>
+    <i class="fa-solid fa-arrow-left-long contact__back_button__left_arrow"></i>Revenir en arrière
+  <% end %>
+  <h2 class='contact__disclaimer'>Messages de contact</h2>
+  <div class="contact__list">
+    <% if @contacts.empty? %>
+      <p class="contact__list__empty">Aucun message de contact</p>
+    <% else %>
+      <% @contacts.each do |contact| %>
+        <div class="contact__list__item">
+          <%= link_to contact, method: :delete, data: { confirm: 'Êtes-vous sûr?' }, class: 'contact__list__item__message__top__delete' do %>
+            <i class="fa-solid fa-xmark contact__list__item__message__top__delete__icon"></i>
+          <% end %>
+          <h3 class="contact__list__item__name"><%= "#{contact.first_name} #{contact.last_name}" %></h3>
+          <div class="contact__list__item__message">
+            <div class="contact__list__item__message__top">
+              <h1 class="contact__list__item__message__top__title"><%= contact.title %></h1>
+              <h1 class="contact__list__item__message__top__name"><%= contact.e_mail %></h1>
+              <div class="contact__list__item__message__bottom">
+                <p><%= contact.message %></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
     <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Contact', new_contact_path %>
+  </div>
+</section>
