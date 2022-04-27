@@ -1,14 +1,18 @@
 include ActionView::Helpers::TextHelper
 class ArtworksController < ApplicationController
   before_action :set_artwork, only: %i[ show edit update destroy ]
-  skip_before_action :authenticate_user!, :only => [:index, :show]
+  skip_before_action :authenticate_user!, :only => [:index, :show, :filter]
 
   # GET /artworks or /artworks.json
   def index
     @artworks = Artwork.order(created_at: :desc).paginate(page: params[:page], :per_page => 10)
+    @techniques = Technique.all
+    @collections = Collection.all
+    @statuses = Status.all
+    @years = Year.all
   end
 
-  # GET /artworks/search or /artworks/search.json
+  # GET /artworks/filter or /artworks/filter.json
   def filter
     @artworks = Artwork.where(filter_params).order(created_at: :desc).paginate(page: params[:page], :per_page => 10)
     render :index
@@ -77,6 +81,6 @@ class ArtworksController < ApplicationController
     end
 
     def filter_params
-      params.permit(:technique_id, :collection_id, :status_id)
+      params.permit(:technique_id, :collection_id, :year_id, :status_id)
     end
 end

@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   resources :contacts, except: [:edit, :update]
   resources :comments
   resources :artworks
+  post 'artworks/filter' => 'artworks#filter'
   resources :statuses
   resources :collections
   resources :techniques
