@@ -1,6 +1,6 @@
 <div class='artwork__item'>
   <div class="artwork__item__top">
-    <%= link_to artworks_path, class: 'artwork__item__top__back_button' do %>
+    <%= link_to :back, class: 'artwork__item__top__back_button' do %>
       <i class="fa-solid fa-arrow-left-long artwork__item__top__back_button__left_arrow"></i>Revenir en arrière
     <% end %>
     <% if user_signed_in? %>

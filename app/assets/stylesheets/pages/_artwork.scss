@@ -12,6 +12,13 @@
     padding: 1rem 2rem;
     font-weight: bold;
   }
+  &__filter {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding: 2rem 0;
+    gap: 1rem;
+  }
   &__create {
     width: 100%;
     display: flex;

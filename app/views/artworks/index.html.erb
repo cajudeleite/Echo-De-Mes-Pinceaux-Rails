@@ -6,6 +6,13 @@
       <% end %>
     </div>
   <% end %>
+  <%= form_tag artworks_path, method: :get, class: 'artwork__filter' do %>
+    <%= select_tag "[artworks_filter][technique_id]", options_from_collection_for_select(@techniques, "id", "name"), prompt: 'Technique' %>
+    <%= select_tag "[artworks_filter][collection_id]", options_from_collection_for_select(@collections, "id", "name"), prompt: 'Collection' %>
+    <%= select_tag "[artworks_filter][year_id]", options_from_collection_for_select(@years, "id", "name"), prompt: 'Année' %>
+    <%= select_tag "[artworks_filter][status_id]", options_from_collection_for_select(@statuses, "id", "name"), prompt: 'Statut' %>
+    <%= submit_tag "Filtrer" %>
+  <% end %>
   <h2 class='artwork__disclaimer'>Cliquez sur les réalisations pour naviguer</h2>
   <div class="artwork__list">
     <% @artworks.each do |artwork| %>

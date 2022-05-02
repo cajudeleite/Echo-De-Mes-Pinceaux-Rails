@@ -5,17 +5,32 @@ class ArtworksController < ApplicationController
 
   # GET /artworks or /artworks.json
   def index
-    @artworks = Artwork.order(created_at: :desc).paginate(page: params[:page], :per_page => 10)
+    @artworks = filter(params[:artworks_filter])
     @techniques = Technique.all
     @collections = Collection.all
     @statuses = Status.all
     @years = Year.all
+
   end
 
-  # GET /artworks/filter or /artworks/filter.json
-  def filter
-    @artworks = Artwork.where(filter_params).order(created_at: :desc).paginate(page: params[:page], :per_page => 10)
-    render :index
+  def filter(query)
+    query_array = []
+
+    if query.present?
+      query.each do |k, v|
+        query_array << "#{k} = '#{v}'" if v.present?
+      end
+    end
+
+    query_string = query_array.join(' AND ')
+
+    if query_array.empty?
+      artworks = Artwork.all
+    else
+      artworks = Artwork.where(query_string)
+    end
+
+    artworks.order(created_at: :desc).paginate(page: params[:page], :per_page => 10)
   end
 
   # GET /artworks/1 or /artworks/1.json
@@ -78,9 +93,5 @@ class ArtworksController < ApplicationController
     # Only allow a list of trusted parameters through.
     def artwork_params
       params.require(:artwork).permit(:title, :year_id, :technique_id, :collection_id, :status_id, :description, photos: [])
-    end
-
-    def filter_params
-      params.permit(:technique_id, :collection_id, :year_id, :status_id)
     end
 end
