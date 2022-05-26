@@ -9,5 +9,6 @@
     <label htmlFor='message' class='form__container__form__input__textarea__label'>Message</label>
     <%= f.text_area :message, class: 'form__container__form__input__textarea__input' %>
   </div>
+  <%= recaptcha_tags %>
   <%= f.button :submit, class: 'form__container__form__submit', value: 'Publier' %>
 <% end %>
