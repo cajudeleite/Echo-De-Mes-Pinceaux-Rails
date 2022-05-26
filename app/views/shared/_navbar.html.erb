@@ -17,10 +17,10 @@
       <div class="navbar__items__link">
         <%= link_to 'Se déconnecter', destroy_user_session_path, class: 'navbar__items__link__text', method: :delete %>
       </div>
-    <%# <% else %> %>
-      <%# <div class="navbar__items__link"> %>
-        <%# <%= link_to 'Contact', new_contact_path, class: 'navbar__items__link__text' %> %>
-      <%# </div> %>
+    <% else %>
+      <div class="navbar__items__link">
+        <%= link_to 'Contact', new_contact_path, class: 'navbar__items__link__text' %>
+      </div>
     <% end %>
   </div>
   <div class="navbar__burger">
@@ -39,10 +39,10 @@
         <div class="navbar__items__link">
           <%= link_to 'Se déconnecter', destroy_user_session_path, class: 'navbar__items__link__text', method: :delete %>
         </div>
-      <%# <% else %> %>
-        <%# <div class="navbar__items__link"> %>
-          <%# <%= link_to 'Contact', new_contact_path, class: 'navbar__items__link__text' %> %>
-        <%# </div> %>
+      <% else %>
+        <div class="navbar__items__link">
+          <%= link_to 'Contact', new_contact_path, class: 'navbar__items__link__text' %>
+        </div>
       <% end %>
     </div>
     <div id='filter' class="filter hidden"></div>

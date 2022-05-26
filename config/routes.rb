@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :contacts, only: [:index, :show, :destroy]
+  resources :contacts, except: [:edit, :update]
   resources :comments
   resources :artworks
   post 'artworks/filter' => 'artworks#filter'
