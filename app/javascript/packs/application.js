@@ -18,3 +18,6 @@ require("channels")
 
 import "controllers"
 import "bootstrap"
+import {startBurger} from "../components/burger"
+
+startBurger();
