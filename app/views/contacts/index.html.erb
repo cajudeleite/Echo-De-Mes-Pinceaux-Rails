@@ -1,25 +1,27 @@
-<section class="contact">
-  <%= link_to :back, class: 'contact__back_button' do %>
-    <i class="fa-solid fa-arrow-left-long contact__back_button__left_arrow"></i>Revenir en arrière
+<section class="category">
+  <%= link_to :back, class: 'category__back_button' do %>
+    <i class="fa-solid fa-arrow-left-long category__back_button__left_arrow"></i>Revenir en arrière
   <% end %>
-  <h2 class='contact__disclaimer'>Messages de contact</h2>
-  <div class="contact__list">
+  <h2 class='category__disclaimer'>Messages de contact</h2>
+  <div class="category__list">
     <% if @contacts.empty? %>
-      <p class="contact__list__empty">Aucun message de contact</p>
+      <p class="category__list__empty">Aucun message de contact</p>
     <% else %>
       <% @contacts.each do |contact| %>
         <div class="contact__list__item">
-          <%= link_to contact, method: :delete, data: { confirm: 'Êtes-vous sûr?' }, class: 'contact__list__item__message__top__delete' do %>
-            <i class="fa-solid fa-xmark contact__list__item__message__top__delete__icon"></i>
-          <% end %>
           <h3 class="contact__list__item__name"><%= "#{contact.first_name} #{contact.last_name}" %></h3>
           <div class="contact__list__item__message">
             <div class="contact__list__item__message__top">
-              <h1 class="contact__list__item__message__top__title"><%= contact.title %></h1>
-              <h1 class="contact__list__item__message__top__name"><%= contact.e_mail %></h1>
-              <div class="contact__list__item__message__bottom">
-                <p><%= contact.message %></p>
+              <div style="display: flex; align-items: baseline;">
+                <h1 class="contact__list__item__message__top__title"><%= contact.title %></h1>
+                <h1 class="contact__list__item__message__top__name"><%= contact.e_mail %></h1>
               </div>
+              <%= link_to contact, method: :delete, data: { confirm: 'Êtes-vous sûr?' }, class: 'contact__list__item__message__top__delete' do %>
+                <i class="fa-solid fa-xmark contact__list__item__message__top__delete__icon"></i>
+              <% end %>
+            </div>
+            <div class="contact__list__item__message__bottom">
+              <p><%= contact.message %></p>
             </div>
           </div>
         </div>
