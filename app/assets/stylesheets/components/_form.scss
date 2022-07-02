@@ -13,7 +13,6 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin: 3rem 0;
     &__back_button {
       text-align: left;
       padding: 1rem 0 0 1rem;
@@ -54,7 +53,7 @@
             padding-bottom: 5px;
           }
           &__label::after {
-            content: ' :';
+            content: " :";
           }
           &__input {
             border-radius: 5px;
@@ -73,7 +72,7 @@
             padding-bottom: 5px;
           }
           &__label::after {
-            content: ' :';
+            content: " :";
           }
           &__select {
             border-radius: 5px;
@@ -91,7 +90,7 @@
             padding-bottom: 5px;
           }
           &__label::after {
-            content: ' :';
+            content: " :";
           }
         }
         &__textarea {
@@ -103,7 +102,7 @@
             padding-bottom: 5px;
           }
           &__label::after {
-            content: ' :';
+            content: " :";
           }
           &__input {
             height: 5rem;
@@ -121,7 +120,7 @@
           border-radius: 5px;
           border: 15px solid $rock-spray;
           border-style: double;
-          background-color: #DF9C34;
+          background-color: #df9c34;
           margin: 1rem;
         }
       }
@@ -162,7 +161,7 @@
             padding-bottom: 5px;
           }
           &__label::after {
-            content: ' :';
+            content: " :";
           }
           &__input {
             border-radius: 5px;
@@ -197,10 +196,10 @@
 }
 
 @media screen and (max-width: 767px) {
-  .artwork_form {
+  .form {
+    background-color: $pampas;
     &__container {
       width: 100%;
-      margin: 0;
       border-radius: 0;
     }
   }
