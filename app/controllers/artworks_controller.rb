@@ -6,10 +6,10 @@ class ArtworksController < ApplicationController
   # GET /artworks or /artworks.json
   def index
     @artworks = filter(params[:artworks_filter])
-    @techniques = Technique.all
-    @collections = Collection.all
-    @statuses = Status.all
-    @years = Year.all
+    @techniques = Technique.order(:name)
+    @collections = Collection.order(:name)
+    @statuses = Status.order(:name)
+    @years = Year.order(name: :desc)
 
   end
 
