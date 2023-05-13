@@ -6,7 +6,8 @@
   <%= f.association :technique, wrapper_html: { class: 'form__container__form__input__dropdown' }, input_html: { class: 'form__container__form__input__dropdown__select' }, label_html: { class: 'form__container__form__input__dropdown__label' }, label: 'Technique' %>
   <%= f.association :collection, wrapper_html: { class: 'form__container__form__input__dropdown' }, input_html: { class: 'form__container__form__input__dropdown__select' }, label_html: { class: 'form__container__form__input__dropdown__label' }, label: 'Collection' %>
   <%= f.association :status, wrapper_html: { class: 'form__container__form__input__dropdown' }, input_html: { class: 'form__container__form__input__dropdown__select' }, label_html: { class: 'form__container__form__input__dropdown__label' }, label: 'Statut' %>
-  <%= f.input :photos, wrapper_html: { class: 'form__container__form__input__dropdown' }, input_html: { class: 'form__container__form__input__dropdown__select' }, label_html: { class: 'form__container__form__input__dropdown__label' }, as: :file, input_html: { multiple: true }, label: 'Photo' %>
+  <%= f.input :photos, wrapper_html: { class: 'form__container__form__input__dropdown' }, input_html: { class: 'form__container__form__input__dropdown__select' }, label_html: { class: 'form__container__form__input__dropdown__label' }, as: :file, input_html: { multiple: true, accept: "image/*,video/*"  }, label: 'Photos et Vidéos' %>
+  <p>* Le premier média doit obligatoirement être une photo</p>
   <div class="form__container__form__input__textarea">
     <label htmlFor='description' class='form__container__form__input__textarea__label'>Descrition</label>
     <%= f.text_area :description, class: 'form__container__form__input__textarea__input' %>

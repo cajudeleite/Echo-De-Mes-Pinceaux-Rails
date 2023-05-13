@@ -29,11 +29,19 @@
         <% @artwork.photos.each_with_index do |photo, index| %>
           <% if index == 0 %>
             <div class="carousel-item active artwork__item__content__photo">
-              <%= cl_image_tag photo.key, crop: :fill, class: 'artwork__item__content__photo__image' %>
+              <% if photo.image? %>
+                <%= cl_image_tag photo.key, crop: :fill, class: 'artwork__item__content__photo__image' %>
+              <% elsif photo.video? %>
+                <%= cl_video_tag photo.key, crop: :fill, controls: true, class: 'artwork__item__content__photo__image' %>
+              <% end %>
             </div>
           <% else %>
             <div class="carousel-item artwork__item__content__photo">
-              <%= cl_image_tag photo.key, crop: :fill, class: 'artwork__item__content__photo__image' %>
+              <% if photo.image? %>
+                <%= cl_image_tag photo.key, crop: :fill, class: 'artwork__item__content__photo__image' %>
+              <% elsif photo.video? %>
+                <%= cl_video_tag photo.key, crop: :fill, controls: true, class: 'artwork__item__content__photo__image' %>
+              <% end %>
             </div>
           <% end %>
         <% end %>
